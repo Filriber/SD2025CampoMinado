@@ -6,7 +6,8 @@ import java.util.List;
 import br.com.serDev.cm.excecao.ExplosaoException;
 
 public class Campo {
-
+	String verde = "\u001B[32m";
+	String vermelho = "\u001B[31m";
 	private final int linha;
 	private final int coluna;
 
@@ -81,6 +82,10 @@ public class Campo {
 		return marcado;
 	}
 	
+	void setAberto(boolean aberto) {
+		this.aberto = aberto;
+	}
+
 	public boolean isAberto() {
 		return aberto;
 	}
@@ -116,13 +121,13 @@ public class Campo {
 		if (marcado) {
 			return "X";
 		}else if (aberto && minado) {
-			return "*";
+			return vermelho + "*";
 		}else if (aberto && minasNaVizinhanca()> 0) {
 			return Long.toString(minasNaVizinhanca());
 		}else if (aberto) {
 			return " ";
 		}else {
-			return "?";
+			return verde + "?";
 		}
 	}
 	
